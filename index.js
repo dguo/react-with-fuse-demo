@@ -7,7 +7,7 @@ import dogs from "./dogs.json";
 
 const fuse = new Fuse(dogs);
 
-function getSearchResultsWithBasicApproach(query) {
+function searchWithBasicApproach(query) {
   if (!query) {
     return [];
   }
@@ -15,7 +15,7 @@ function getSearchResultsWithBasicApproach(query) {
   return dogs.filter((dog) => dog.toLowerCase().includes(query.toLowerCase()));
 }
 
-function getSearchResultsWithFuse(query) {
+function searchWithFuse(query) {
   if (!query) {
     return [];
   }
@@ -49,20 +49,17 @@ function Search() {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          const query = event.target.elements.dogBreedSearch.value;
+          const query = event.target.elements.query.value;
           const useFuse = event.target.elements.fuse.checked;
           setSearchResults(
-            useFuse
-              ? getSearchResultsWithFuse(query)
-              : getSearchResultsWithBasicApproach(query)
+            useFuse ? searchWithFuse(query) : searchWithBasicApproach(query)
           );
         }}
       >
-        <label htmlFor="dogBreedSearch">Search for a dog dog:</label>
-        <input type="search" id="dogBreedSearch" />
+        <label htmlFor="query">Search for a dog breed:</label>
+        <input type="search" id="query" />
         <input type="checkbox" name="fuse" />
         <label htmlFor="fuse"> Use Fuse.js</label>
-        <br />
         <button>Search</button>
       </form>
 
