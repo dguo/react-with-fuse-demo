@@ -13,7 +13,7 @@ pids
 node_modules/
 
 # Parcel directories
-.cache
+.parcel-cache
 dist
 
 # Vim
