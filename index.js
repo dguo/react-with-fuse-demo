@@ -45,7 +45,8 @@ function Search() {
   const [searchResults, setSearchResults] = useState(null);
 
   return (
-    <>
+    <div className="center">
+      <h1>React With Fuse Demo</h1>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -59,12 +60,15 @@ function Search() {
         <label htmlFor="query">Search for a dog breed:</label>
         <input type="search" id="query" />
         <input type="checkbox" name="fuse" />
-        <label htmlFor="fuse"> Use Fuse.js</label>
+        <label htmlFor="fuse">
+          {" "}
+          Use <a href="https://fusejs.io/">Fuse.js</a>
+        </label>
         <button>Search</button>
       </form>
 
       <SearchResults results={searchResults} />
-    </>
+    </div>
   );
 }
 
